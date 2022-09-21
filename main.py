@@ -7,4 +7,8 @@
 from solucion import Solution
 
 solution = Solution()
+#Punto1.
+solution.addSerie()
 
+print(solution.series)
+print("\n\n")
