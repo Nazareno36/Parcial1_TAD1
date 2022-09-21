@@ -6,7 +6,7 @@ class Solution:
     
     #punto 1:
 
-    def addSerie(self):
+    def add_serie(self):
         while True:
             try:
                 series = int(input("Ingrese la cantidad de series --> "))
@@ -31,11 +31,11 @@ class Solution:
             serie["original_lenguage"] = input("Lenguaje original --> ")
             seasons = serie["number_seasons"]
             for i in range(1,seasons+1):
-                serie["features_seasons"].append(self.addSeason())
+                serie["features_seasons"].append(self.add_season())
             self.series.append(serie)
 
 
-    def addSeason(self):
+    def add_season(self):
         season = {
             "season_number" : 0,
             "season_name": "",
@@ -81,4 +81,30 @@ class Solution:
         
         return season
 
+    #Punto 2:
+
+    #A.
+    def series_by_actor(self, actor):
+        series_by = []
+        for serie in self.series:
+            for season in serie["features_seasons"]:
+                if actor in season["cast"] : 
+                    series_by.append(serie["serie"])
+                    break
+        print(series_by)
     
+    #B.
+    def series_in_lenguage(self, lenguage):
+        series_in_lengu = []
+        for serie in self.series:
+            if serie["original_lenguage"] == lenguage:
+                series_in_lengu.append(serie["serie"])
+        print(series_in_lengu)
+    
+    #C.
+    def delete_series_on_premier_date(self,premier_date):
+        for serie in self.series:
+            for season in serie["features_seasons"]:
+                if premier_date == season["premier_date"]:
+                    self.series.remove(serie)
+                    break
